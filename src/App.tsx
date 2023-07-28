@@ -160,19 +160,6 @@ function App() {
         >
           Copy to clipboard
         </button>
-        <NCage
-          initialCubeNumber={1}
-          cubeDelta={0}
-          initialCubeScale={1}
-          cubeScaleDelta={1}
-          appearPercentage={1}
-          percentageDelta={1}
-          startOpacity={0.5}
-          opacityDelta={0.01}
-          startIntervalMs={200}
-          intervalDeltaMs={100}
-          alwaysVisible={true}
-        />
         <br />
         <a href="https://www.npmjs.com/package/ncage-cube">
           https://www.npmjs.com/package/ncage-cube
