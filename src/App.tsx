@@ -1,12 +1,9 @@
 import { useState } from 'react';
-import reactLogo from './assets/react.svg';
-import viteLogo from '/vite.svg';
 import './App.css';
 import { NCage } from 'ncage-cube';
 import { RangeSlider } from './RangeSlider';
 
 function App() {
-  const [count, setCount] = useState(0);
   const [initialCubeNumber, setInitialCubeNumber] = useState(1);
   const [cubeDelta, setCubeDelta] = useState(0);
   const [initialCubeScale, setInitialCubeScale] = useState(1);
@@ -15,8 +12,8 @@ function App() {
   const [percentageDelta, setPercentageDelta] = useState(1);
   const [startOpacity, setStartOpacity] = useState(0.5);
   const [opacityDelta, setOpacityDelta] = useState(0.01);
-  const [startIntervalMs, setStartIntervalMs] = useState(1);
-  const [intervalDeltaMs, setIntervalDeltaMs] = useState(1);
+  const [startIntervalMs, setStartIntervalMs] = useState(200);
+  const [intervalDeltaMs, setIntervalDeltaMs] = useState(100);
   const [alwaysVisible, setAlwaysVisible] = useState(true);
 
   console.log('render', cubeDelta);
@@ -24,6 +21,12 @@ function App() {
   return (
     <>
       <div>
+        <b>Meet the NCage Cube!</b>
+        <p style={{ display: 'flex' }}>
+          The idea behind the cube, is to slip it into someones codebase without
+          them seeing. Then as they are developing it gradually starts to appear
+          more and more. Or just use it as art, it's up to you.
+        </p>
         <RangeSlider
           name="initialCubeNumber"
           min={1}
@@ -48,8 +51,9 @@ function App() {
         />
         <RangeSlider
           name="cubeScaleDelta"
-          min={1}
-          max={10}
+          min={0.95}
+          max={1.05}
+          step={0.001}
           value={cubeScaleDelta}
           setValue={setCubeScaleDelta}
         />
@@ -69,15 +73,17 @@ function App() {
         />
         <RangeSlider
           name="startOpacity"
-          min={1}
-          max={100}
+          min={0}
+          max={1}
+          step={0.01}
           value={startOpacity}
           setValue={setStartOpacity}
         />
         <RangeSlider
           name="opacityDelta"
-          min={1}
-          max={100}
+          min={0}
+          max={1}
+          step={0.001}
           value={opacityDelta}
           setValue={setOpacityDelta}
         />
@@ -106,26 +112,11 @@ function App() {
             style={{ display: 'inline-block', verticalAlign: 'middle' }}
           />
         </div>
-
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
+        <p>Changing the settings will restart the cube's lifecylce</p>
+        <a href="https://www.npmjs.com/package/ncage-cube">
+          https://www.npmjs.com/package/ncage-cube
         </a>
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
       <NCage
         initialCubeNumber={initialCubeNumber}
         cubeDelta={cubeDelta}

@@ -5,6 +5,10 @@
   text-align: center;
 }
 
+p {
+  max-width: 360px;
+}
+
 .logo {
   height: 6em;
   padding: 1.5em;
