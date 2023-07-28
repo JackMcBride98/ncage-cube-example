@@ -16,8 +16,6 @@ function App() {
   const [intervalDeltaMs, setIntervalDeltaMs] = useState(100);
   const [alwaysVisible, setAlwaysVisible] = useState(true);
 
-  console.log('render', cubeDelta);
-
   return (
     <>
       <div>
@@ -113,6 +111,69 @@ function App() {
           />
         </div>
         <p>Changing the settings will restart the cube's lifecylce</p>
+        <br />
+
+        <div style={{ display: 'flex', justifyItems: 'center' }}>
+          <code
+            id="copyCode"
+            style={{
+              textAlign: 'left',
+              display: 'flex',
+              margin: 'auto',
+              fontSize: '1rem',
+            }}
+          >
+            &lt;NCage
+            <br />
+            &nbsp; initialCubeNumber=&#123;{initialCubeNumber}&#125;
+            <br />
+            &nbsp; cubeDelta=&#123;{cubeDelta}&#125;
+            <br />
+            &nbsp; initialCubeScale=&#123;{initialCubeScale}&#125;
+            <br />
+            &nbsp; cubeScaleDelta=&#123;{cubeScaleDelta}&#125;
+            <br />
+            &nbsp; appearPercentage=&#123;{appearPercentage}&#125;
+            <br />
+            &nbsp; percentageDelta=&#123;{percentageDelta}&#125;
+            <br />
+            &nbsp; startOpacity=&#123;{startOpacity}&#125;
+            <br />
+            &nbsp; opacityDelta=&#123;{opacityDelta}&#125;
+            <br />
+            &nbsp; startIntervalMs=&#123;{startIntervalMs}&#125;
+            <br />
+            &nbsp; intervalDeltaMs=&#123;{intervalDeltaMs}&#125;
+            <br /> &nbsp; alwaysVisible=&#123;{alwaysVisible.toString()}&#125;
+            <br /> /&gt;
+          </code>
+        </div>
+
+        <button
+          // eslint-disable-next-line @typescript-eslint/no-misused-promises
+          onClick={async () => {
+            const copyText = document.getElementById('copyCode');
+            const value = copyText?.textContent || '';
+            await navigator.clipboard.writeText(value);
+          }}
+          style={{ border: '1px solid black' }}
+        >
+          Copy to clipboard
+        </button>
+        <NCage
+          initialCubeNumber={1}
+          cubeDelta={0}
+          initialCubeScale={1}
+          cubeScaleDelta={1}
+          appearPercentage={1}
+          percentageDelta={1}
+          startOpacity={0.5}
+          opacityDelta={0.01}
+          startIntervalMs={200}
+          intervalDeltaMs={100}
+          alwaysVisible={true}
+        />
+        <br />
         <a href="https://www.npmjs.com/package/ncage-cube">
           https://www.npmjs.com/package/ncage-cube
         </a>
